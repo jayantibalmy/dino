@@ -4,16 +4,20 @@ body {
     color: white;
     margin: 0;
   }
-
-  .dino{
+  img{
     height :50px;
-    padding-left: 2.5rem;
+  }
+
+  .hero-container{
+    height: 50vh;
+    background-color: rgb(197, 197, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0rem 2rem 0rem 2rem;
   }
 
   .dino-container{
-    height: 50vh;
-    background-color:white;
-    display: flex;
-    align-items: flex-end;
-    background-color: rgb(197, 197, 240);
+   display: flex;
+   align-items: baseline;
   }
