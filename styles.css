@@ -1,0 +1,19 @@
+body {
+    font-family: system-ui;
+    background-color: green;
+    color: white;
+    margin: 0;
+  }
+
+  .dino{
+    height :50px;
+    padding-left: 2.5rem;
+  }
+
+  .dino-container{
+    height: 50vh;
+    background-color:white;
+    display: flex;
+    align-items: flex-end;
+    background-color: rgb(197, 197, 240);
+  }
