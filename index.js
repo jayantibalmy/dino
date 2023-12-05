@@ -23,14 +23,33 @@ function jump() {
         });
     }
 }
+
 // Function to handle left move 
-function leftMove (){
-    gsap.to(dino,{x:'-=30'})
-}
-// Function to handle right move 
-function rightMove (){
-    gsap.to(dino,{x:'+=30'})
-}
+function leftMove() {
+    const dinoX = dino.getBoundingClientRect().left; // Get dino's left position
+  
+    if (dinoX > 20) { // Check if dino's left position exceeds viewport width
+      gsap.to(dino, { x: '-=30' }); // Move left
+    } else {
+      // Dino is already at the leftmost position, prevent further movement
+      gsap.to(dino, { x: 0 });
+    }
+  }
+  
+  // Function to handle right move 
+  function rightMove() {
+    const dinoX = dino.getBoundingClientRect().left; // Get dino's left position
+    const viewportWidth = window.innerWidth - 20; // Get viewport width
+  
+    if (dinoX < viewportWidth - dino.offsetWidth) { // Check if dino's right position exceeds viewport width
+      gsap.to(dino, { x: '+=30' }); // Move right
+    } else {
+      // Dino is already at the rightmost position, prevent further movement
+      gsap.to(dino, { x: viewportWidth - dino.offsetWidth });
+    }
+  }
+  
+
 
 // Event listener to trigger the jump on a user click
 window.addEventListener("click", jump);

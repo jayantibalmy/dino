@@ -14,10 +14,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0rem 2rem 0rem 2rem;
   }
 
   .dino-container{
-   display: flex;
-   align-items: baseline;
+   background-color: wheat;
   }
