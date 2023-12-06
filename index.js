@@ -3,17 +3,17 @@ function rotateToLandscapeMode() {
     const viewportWidth = window.innerWidth;
 
     if (viewportWidth < 600) {
-      // Adjust the threshold (600 in this example) based on your needs
-      document.body.classList.add('landscape');
+        // Adjust the threshold (600 in this example) based on your needs
+        document.body.classList.add('landscape');
     } else {
-      document.body.classList.remove('landscape');
+        document.body.classList.remove('landscape');
     }
-  }
-  // Rotate to landscape mode initially
-  rotateToLandscapeMode();
+}
+// Rotate to landscape mode initially
+rotateToLandscapeMode();
 
-  // Attach the function to the window resize event
-  window.addEventListener('resize', rotateToLandscapeMode);
+// Attach the function to the window resize event
+window.addEventListener('resize', rotateToLandscapeMode);
 
 const dino = document.querySelector(".dino");
 
@@ -48,9 +48,9 @@ function leftMove() {
     const dinoCenter = viewportWidth / 2 - dino.offsetWidth / 2; // Calculate dino's center position
 
     if (dinoX > dinoCenter && dinoX > 20) { // Check if dino's left position is between center and minimum threshold
-        gsap.to(dino, { x: '-=30' }); // Move left
+        gsap.to(dino, { x: '-=40' }); // Move left
     } else if (dinoX > 20) { // Check if dino's left position exceeds minimum threshold
-        gsap.to(dino, { x: '-=30' }); // Move left
+        gsap.to(dino, { x: '-=40' }); // Move left
     }
 
 }
@@ -59,11 +59,10 @@ function leftMove() {
 function rightMove() {
     const dinoX = dino.getBoundingClientRect().left; // Get dino's left position
     const dinoWidth = dino.offsetWidth; // Get dino's width
-    if (dinoX + dinoWidth + 30 < window.innerWidth) {
-        gsap.to(dino, { x: `+=30` }); // Move right by 30 pixels
+    if (dinoX + dinoWidth + 50 < window.innerWidth) {
+        gsap.to(dino, { x: `+=40` }); // Move right by 30 pixels
     }
 }
-
 
 // Event listener to trigger the jump on a user click
 window.addEventListener("click", jump);
@@ -81,15 +80,25 @@ window.addEventListener("keydown", (event) => {
     }
 });
 
+
+const viewportHeight = window.innerHeight / 2;
+const bottomPosition = viewportHeight;
+
 function astFall() {
-    gsap.to(".right-ast-1", { y: 300, x: -300, duration: 1, repeat: -1 })
-    gsap.to(".right-ast-2", { y: 300, x: -300, duration: 0.5, repeat: -1 })
-    gsap.to(".right-ast-3", { y: 300, x: -300, rotation: 3246, duration: 1, repeat: -1 })
-    gsap.to(".left-ast-1", { y: 300, x: 300, duration: 1, repeat: -1 })
-    gsap.to(".left-ast-2", { y: 300, x: 300, duration: 0.5, repeat: -1 })
-    gsap.to(".left-ast-3", { y: 300, x: 300, rotation: 3246, duration: 1, repeat: -1 })
+    gsap.to(".left-ast-1", { y: bottomPosition, x: 300, duration: 5, repeat: -1, delay: 2.5 })
+    gsap.to(".left-ast-2", { y: bottomPosition, x: 0, duration: 7, repeat: -1 })
+    gsap.to(".left-ast-3", { y: bottomPosition, x: 500, rotation: 3246, duration: 12, repeat: -1, delay: 3 })
+    gsap.to(".left-ast-4", { y: bottomPosition, x: 200, duration: 8, repeat: -1, delay: 1.6 })
+    gsap.to(".left-ast-5", { y: bottomPosition, x: 500, duration: 9, repeat: -1 })
+
+    gsap.to(".right-ast-1", { y: bottomPosition, x: 0, duration: 4, repeat: -1, delay: 0.9 })
+    gsap.to(".right-ast-2", { y: bottomPosition, x: -600, duration: 5, repeat: -1, delay: 2.2 })
+    gsap.to(".right-ast-3", { y: bottomPosition, x: -300, rotation: 3246, duration: 13, repeat: -1, delay: 2 })
+    gsap.to(".right-ast-4", { y: bottomPosition, x: -300, duration: 7, repeat: -1, delay: 1.6 })
+    gsap.to(".right-ast-5", { y: bottomPosition, x: -300, duration: 6, repeat: -1, delay: 2 })
 }
-// const gameStart = true; 
+
+// const gameStart = true;
 if (gameStart == true) {
     astFall();
 }

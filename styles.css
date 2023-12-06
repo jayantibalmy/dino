@@ -16,6 +16,10 @@ body {
     top: 100%;
     left: 0;
   }
+
+  #start{
+    text-align: center;
+  }
   
   .ast-container img{
     max-height: 50px;
