@@ -4,10 +4,28 @@ body {
     color: white;
     margin: 0;
   }
-  img{
-    height :50px;
+  
+  body.landscape {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 100%;
+    left: 0;
+  }
+  
+  .ast-container img{
+    max-height: 50px;
+    height: 100%;
   }
 
+  .dino {
+    max-height: 100px;
+    height: 100%;
+  }
   .hero-container{
     height: 50vh;
     background-color: rgb(197, 197, 240);
@@ -22,7 +40,14 @@ body {
 
   .ast-container{
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
+    justify-content: space-between;
+  }
+  .left-ast-container, .right-ast-container{
+    display: flex;
+    
+  }
+  
+  .left-ast-container img{
+     transform: scaleX(-1);  /* to flip the svg in vertical direction */
   }
   
