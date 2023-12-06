@@ -17,5 +17,12 @@ body {
   }
 
   .dino-container{
-   background-color: wheat;
+    text-align: center;  
   }
+
+  .ast-container{
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+  

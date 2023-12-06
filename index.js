@@ -24,44 +24,42 @@ function jump() {
     }
 }
 
-// Function to handle left move 
+// Function to handle left move   
 function leftMove() {
     const dinoX = dino.getBoundingClientRect().left; // Get dino's left position
-  
-    if (dinoX > 20) { // Check if dino's left position exceeds viewport width
-      gsap.to(dino, { x: '-=30' }); // Move left
-    } else {
-      // Dino is already at the leftmost position, prevent further movement
-      gsap.to(dino, { x: 0 });
+    const viewportWidth = window.innerWidth; // Get viewport width
+    const dinoCenter = viewportWidth / 2 - dino.offsetWidth / 2; // Calculate dino's center position
+
+    if (dinoX > dinoCenter && dinoX > 20) { // Check if dino's left position is between center and minimum threshold
+        gsap.to(dino, { x: '-=30' }); // Move left
+    } else if (dinoX > 20) { // Check if dino's left position exceeds minimum threshold
+        gsap.to(dino, { x: '-=30' }); // Move left
     }
-  }
-  
-  // Function to handle right move 
-  function rightMove() {
+
+}
+
+// Function to handle right move
+function rightMove() {
     const dinoX = dino.getBoundingClientRect().left; // Get dino's left position
-    const viewportWidth = window.innerWidth - 20; // Get viewport width
-  
-    if (dinoX < viewportWidth - dino.offsetWidth) { // Check if dino's right position exceeds viewport width
-      gsap.to(dino, { x: '+=30' }); // Move right
-    } else {
-      // Dino is already at the rightmost position, prevent further movement
-      gsap.to(dino, { x: viewportWidth - dino.offsetWidth });
+    const dinoWidth = dino.offsetWidth; // Get dino's width
+    if (dinoX + dinoWidth + 30 < window.innerWidth) {
+        gsap.to(dino, { x: `+=30` }); // Move right by 30 pixels
     }
-  }
-  
+}
 
 
 // Event listener to trigger the jump on a user click
 window.addEventListener("click", jump);
-// Event listener for space bar press
+
+// Event listener for the jump , leftMove , rightMove 
 window.addEventListener("keydown", (event) => {
     if (event.code === "Space" || event.key === "ArrowUp") {
         jump();
     }
-    else if (event.key === "ArrowLeft"){
+    else if (event.key === "ArrowLeft") {
         leftMove();
     }
-    else if (event.key === "ArrowRight"){
+    else if (event.key === "ArrowRight") {
         rightMove();
     }
 });
